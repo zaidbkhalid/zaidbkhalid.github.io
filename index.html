@@ -1,10 +1,1138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Zaid Bin - Khalid</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zaid Bin Khalid - Portfolio</title>
+  <meta name="description" content="Personal portfolio of Zaid Bin Khalid">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===== CSS Reset & Variables ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Colors */
+      --color-bg: #fafbfc;
+      --color-bg-alt: #ffffff;
+      --color-text: #1e293b;
+      --color-text-muted: #64748b;
+      --color-text-light: #94a3b8;
+      --color-accent: #2563eb;
+      --color-accent-hover: #1d4ed8;
+      --color-accent-light: #eff6ff;
+      --color-border: #e2e8f0;
+      --color-border-light: #f1f5f9;
+      
+      /* Typography */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4rem;
+      --space-4xl: 6rem;
+      
+      /* Other */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+      --transition: 0.2s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== Container ===== */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    /* ===== Navigation ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .nav__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav__menu {
+      display: none;
+      list-style: none;
+      gap: var(--space-xl);
+    }
+
+    .nav__link {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width var(--transition);
+    }
+
+    .nav__link:hover {
+      color: var(--color-text);
+    }
+
+    .nav__link:hover::after {
+      width: 100%;
+    }
+
+    .nav__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-text);
+    }
+
+    /* Mobile Menu */
+    .nav__mobile {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--color-bg-alt);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-lg);
+    }
+
+    .nav__mobile.active {
+      display: block;
+    }
+
+    .nav__mobile-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .nav__mobile-link {
+      display: block;
+      padding: var(--space-sm) 0;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav__mobile-link:hover {
+      color: var(--color-accent);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      padding: calc(70px + var(--space-3xl)) 0 var(--space-4xl);
+    }
+
+    .hero__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero__image-wrapper {
+      margin-bottom: var(--space-xl);
+    }
+
+    .hero__image {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--color-bg-alt);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero__content {
+      max-width: 600px;
+    }
+
+    .hero__greeting {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-md);
+    }
+
+    .hero__title {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+    }
+
+    .hero__subtitle {
+      font-size: 1.125rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-xl);
+    }
+
+    .hero__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+    }
+
+    .hero__social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--color-bg-alt);
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+      transition: all var(--transition);
+    }
+
+    .hero__social:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ===== Section Styles ===== */
+    .section {
+      padding: var(--space-4xl) 0;
+    }
+
+    .section--alt {
+      background: var(--color-bg-alt);
+    }
+
+    .section__header {
+      text-align: center;
+      margin-bottom: var(--space-3xl);
+    }
+
+    .section__label {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .section__title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--color-text);
+      letter-spacing: -0.02em;
+    }
+
+    /* ===== About Section ===== */
+    .about__content {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .about__text {
+      font-size: 1.0625rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    .about__text:last-child {
+      margin-bottom: 0;
+    }
+
+    .about__highlight {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    /* ===== Work Experience Section ===== */
+    .work__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .work-card {
+      background: var(--color-bg-alt);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      border: 1px solid var(--color-border);
+      transition: all var(--transition);
+    }
+
+    .work-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-border-light);
+    }
+
+    .work-card__header {
+      margin-bottom: var(--space-lg);
+    }
+
+    .work-card__company {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-xs);
+    }
+
+    .work-card__title {
+      font-family: var(--font-serif);
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .work-card__subtitle {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+    }
+
+    .work-card__description {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    /* Media Gallery */
+    .media-gallery {
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .media-card {
+      background: var(--color-bg);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border-light);
+      transition: all var(--transition);
+    }
+
+    .media-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .media-card__preview {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-border-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .media-card__preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .media-card__preview-icon {
+      color: var(--color-accent);
+      opacity: 0.5;
+    }
+
+    .media-card__preview iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .media-card__body {
+      padding: var(--space-md);
+    }
+
+    .media-card__title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .media-card__type {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      color: var(--color-text-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    .media-card__actions {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn--primary {
+      background: var(--color-accent);
+      color: white;
+    }
+
+    .btn--primary:hover {
+      background: var(--color-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn--secondary {
+      background: var(--color-bg-alt);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn--secondary:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .btn--sm {
+      padding: var(--space-xs) var(--space-sm);
+      font-size: 0.75rem;
+    }
+
+    /* ===== Projects Section ===== */
+    .projects__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .project-card {
+      background: var(--color-bg-alt);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      transition: all var(--transition);
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-border-light);
+      transform: translateY(-4px);
+    }
+
+    .project-card__image {
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-border-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-card__image-icon {
+      color: var(--color-accent);
+      opacity: 0.3;
+    }
+
+    .project-card__body {
+      padding: var(--space-xl);
+    }
+
+    .project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+
+    .project-card__tag {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      background: var(--color-accent-light);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-card__title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+    }
+
+    .project-card__description {
+      font-size: 0.9375rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    .project-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      padding: var(--space-3xl) 0;
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border-light);
+    }
+
+    .footer__inner {
+      text-align: center;
+    }
+
+    .footer__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .footer__link {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: color var(--transition);
+    }
+
+    .footer__link:hover {
+      color: var(--color-accent);
+    }
+
+    .footer__copy {
+      font-size: 0.875rem;
+      color: var(--color-text-light);
+    }
+
+    /* ===== Desktop Styles ===== */
+    @media (min-width: 768px) {
+      .nav__menu {
+        display: flex;
+      }
+
+      .nav__toggle {
+        display: none;
+      }
+
+      .hero__inner {
+        flex-direction: row-reverse;
+        text-align: left;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-3xl);
+      }
+
+      .hero__image-wrapper {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .hero__image {
+        width: 200px;
+        height: 200px;
+      }
+
+      .hero__links {
+        justify-content: flex-start;
+      }
+
+      .hero__title {
+        font-size: 3rem;
+      }
+
+      .section__title {
+        font-size: 2.25rem;
+      }
+
+      .media-gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero__image {
+        width: 240px;
+        height: 240px;
+      }
+
+      .hero__title {
+        font-size: 3.5rem;
+      }
+
+      .media-gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .projects__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Zaid Bin Khalid</h1>
-  <p>Welcome to my website.</p>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__logo">Zaid Bin Khalid</a>
+      
+      <ul class="nav__menu">
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#work" class="nav__link">Work</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+      </ul>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <i data-lucide="menu" width="24" height="24"></i>
+      </button>
+
+      <div class="nav__mobile" id="navMobile">
+        <ul class="nav__mobile-list">
+          <li><a href="#about" class="nav__mobile-link">About</a></li>
+          <li><a href="#work" class="nav__mobile-link">Work</a></li>
+          <li><a href="#projects" class="nav__mobile-link">Projects</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__image-wrapper">
+        <img src="images/profile.jpg" alt="Zaid Bin Khalid" class="hero__image" onerror="this.style.background='linear-gradient(135deg, #eff6ff 0%, #e2e8f0 100%)'; this.style.display='block';">
+      </div>
+      
+      <div class="hero__content">
+        <span class="hero__greeting">
+          <i data-lucide="sparkles" width="16" height="16"></i>
+          Welcome
+        </span>
+        <h1 class="hero__title">Zaid Bin Khalid</h1>
+        <p class="hero__subtitle">A brief tagline describing your role, expertise, or passion. Keep it concise and impactful.</p>
+        
+        <div class="hero__links">
+          <a href="https://github.com/" class="hero__social" aria-label="GitHub" target="_blank" rel="noopener">
+            <i data-lucide="github" width="20" height="20"></i>
+          </a>
+          <a href="https://linkedin.com/" class="hero__social" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <i data-lucide="linkedin" width="20" height="20"></i>
+          </a>
+          <a href="mailto:email@example.com" class="hero__social" aria-label="Email">
+            <i data-lucide="mail" width="20" height="20"></i>
+          </a>
+          <a href="https://twitter.com/" class="hero__social" aria-label="Twitter" target="_blank" rel="noopener">
+            <i data-lucide="twitter" width="20" height="20"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section section--alt" id="about">
+    <div class="container">
+      <header class="section__header">
+        <span class="section__label">
+          <i data-lucide="user" width="14" height="14"></i>
+          About Me
+        </span>
+        <h2 class="section__title">A Little About Myself</h2>
+      </header>
+
+      <div class="about__content">
+        <p class="about__text">
+          Hello! I'm <span class="about__highlight">Zaid Bin Khalid</span>, a passionate professional with expertise in your field of work. Write a brief introduction about yourself here—your background, what drives you, and what makes you unique.
+        </p>
+        <p class="about__text">
+          Share your journey, your skills, and what you're currently focused on. This section should give visitors a sense of who you are both professionally and personally. Keep it authentic and engaging.
+        </p>
+        <p class="about__text">
+          When I'm not working, I enjoy hobbies or interests. Feel free to mention what you're learning, exploring, or any personal projects that excite you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section class="section" id="work">
+    <div class="container">
+      <header class="section__header">
+        <span class="section__label">
+          <i data-lucide="briefcase" width="14" height="14"></i>
+          Experience
+        </span>
+        <h2 class="section__title">Work Experience</h2>
+      </header>
+
+      <div class="work__list">
+        <!-- Work Item 1 -->
+        <article class="work-card">
+          <header class="work-card__header">
+            <span class="work-card__company">
+              <i data-lucide="building-2" width="14" height="14"></i>
+              Company Name
+            </span>
+            <h3 class="work-card__title">Senior Position Title</h3>
+            <p class="work-card__subtitle">Jan 2023 - Present · Full-time</p>
+          </header>
+          
+          <p class="work-card__description">
+            Brief description of your role and key responsibilities. Highlight significant achievements, projects you led, or technologies you worked with. Keep it impactful and results-oriented.
+          </p>
+
+          <!-- Media Gallery -->
+          <div class="media-gallery">
+            <div class="media-card">
+              <div class="media-card__preview">
+                <img src="images/work-1-preview.jpg" alt="Project Preview" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'image\' class=\'media-card__preview-icon\' width=\'48\' height=\'48\'></i>'; lucide.createIcons();">
+              </div>
+              <div class="media-card__body">
+                <h4 class="media-card__title">Project Documentation</h4>
+                <span class="media-card__type">
+                  <i data-lucide="file-text" width="12" height="12"></i>
+                  PDF Document
+                </span>
+                <div class="media-card__actions">
+                  <a href="https://drive.google.com/file/d/YOUR_FILE_ID/preview" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                    <i data-lucide="eye" width="14" height="14"></i>
+                    View PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="media-card">
+              <div class="media-card__preview">
+                <!-- Google Drive Video Embed Placeholder -->
+                <i data-lucide="play-circle" class="media-card__preview-icon" width="48" height="48"></i>
+              </div>
+              <div class="media-card__body">
+                <h4 class="media-card__title">Demo Video</h4>
+                <span class="media-card__type">
+                  <i data-lucide="video" width="12" height="12"></i>
+                  Video
+                </span>
+                <div class="media-card__actions">
+                  <a href="https://drive.google.com/file/d/YOUR_VIDEO_ID/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                    <i data-lucide="play" width="14" height="14"></i>
+                    Watch Video
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="media-card">
+              <div class="media-card__preview">
+                <img src="images/work-1-screenshot.jpg" alt="Screenshot" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'image\' class=\'media-card__preview-icon\' width=\'48\' height=\'48\'></i>'; lucide.createIcons();">
+              </div>
+              <div class="media-card__body">
+                <h4 class="media-card__title">Project Screenshot</h4>
+                <span class="media-card__type">
+                  <i data-lucide="image" width="12" height="12"></i>
+                  Image
+                </span>
+                <div class="media-card__actions">
+                  <a href="images/work-1-screenshot.jpg" class="btn btn--secondary btn--sm" target="_blank">
+                    <i data-lucide="maximize-2" width="14" height="14"></i>
+                    Full Size
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Work Item 2 -->
+        <article class="work-card">
+          <header class="work-card__header">
+            <span class="work-card__company">
+              <i data-lucide="building-2" width="14" height="14"></i>
+              Previous Company
+            </span>
+            <h3 class="work-card__title">Position Title</h3>
+            <p class="work-card__subtitle">Jun 2020 - Dec 2022 · Full-time</p>
+          </header>
+          
+          <p class="work-card__description">
+            Description of your previous role. Focus on growth, learnings, and key contributions. Quantify achievements where possible (e.g., "Improved performance by 40%").
+          </p>
+
+          <div class="media-gallery">
+            <div class="media-card">
+              <div class="media-card__preview">
+                <i data-lucide="presentation" class="media-card__preview-icon" width="48" height="48"></i>
+              </div>
+              <div class="media-card__body">
+                <h4 class="media-card__title">Presentation Slides</h4>
+                <span class="media-card__type">
+                  <i data-lucide="file-text" width="12" height="12"></i>
+                  PDF Slides
+                </span>
+                <div class="media-card__actions">
+                  <a href="https://drive.google.com/file/d/YOUR_FILE_ID/preview" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                    <i data-lucide="eye" width="14" height="14"></i>
+                    View PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="section section--alt" id="projects">
+    <div class="container">
+      <header class="section__header">
+        <span class="section__label">
+          <i data-lucide="layers" width="14" height="14"></i>
+          Portfolio
+        </span>
+        <h2 class="section__title">Featured Projects</h2>
+      </header>
+
+      <div class="projects__grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-1.jpg" alt="Project One" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">React</span>
+              <span class="project-card__tag">TypeScript</span>
+            </div>
+            <h3 class="project-card__title">Project One</h3>
+            <p class="project-card__description">A brief description of this project. What problem does it solve? What technologies did you use?</p>
+            <div class="project-card__actions">
+              <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+                View Code
+              </a>
+              <a href="#" class="btn btn--secondary btn--sm" target="_blank">
+                <i data-lucide="external-link" width="14" height="14"></i>
+                Live Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-2.jpg" alt="Project Two" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">Python</span>
+              <span class="project-card__tag">Machine Learning</span>
+            </div>
+            <h3 class="project-card__title">Project Two</h3>
+            <p class="project-card__description">Another project description. Highlight unique aspects, challenges overcome, or impressive results.</p>
+            <div class="project-card__actions">
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="file-text" width="14" height="14"></i>
+                View PDF
+              </a>
+              <a href="https://drive.google.com/file/d/YOUR_VIDEO_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="play" width="14" height="14"></i>
+                Watch Video
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-3.jpg" alt="Project Three" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">Node.js</span>
+              <span class="project-card__tag">MongoDB</span>
+            </div>
+            <h3 class="project-card__title">Project Three</h3>
+            <p class="project-card__description">Describe this project's purpose, your role, and the impact it had. Be specific and quantify if possible.</p>
+            <div class="project-card__actions">
+              <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+                View Code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-4.jpg" alt="Project Four" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">UI/UX</span>
+              <span class="project-card__tag">Figma</span>
+            </div>
+            <h3 class="project-card__title">Project Four</h3>
+            <p class="project-card__description">A design or research project. Explain your process, key insights, and the final outcome.</p>
+            <div class="project-card__actions">
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="file-text" width="14" height="14"></i>
+                View PDF
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-5.jpg" alt="Project Five" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">AWS</span>
+              <span class="project-card__tag">Docker</span>
+            </div>
+            <h3 class="project-card__title">Project Five</h3>
+            <p class="project-card__description">Infrastructure or DevOps project. Explain the architecture, challenges, and solutions implemented.</p>
+            <div class="project-card__actions">
+              <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+                View Code
+              </a>
+              <a href="https://drive.google.com/file/d/YOUR_VIDEO_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="play" width="14" height="14"></i>
+                Watch Demo
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-6.jpg" alt="Project Six" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">Mobile</span>
+              <span class="project-card__tag">Flutter</span>
+            </div>
+            <h3 class="project-card__title">Project Six</h3>
+            <p class="project-card__description">Mobile application project. Describe the app's purpose, features, and your development approach.</p>
+            <div class="project-card__actions">
+              <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+                View Code
+              </a>
+              <a href="#" class="btn btn--secondary btn--sm" target="_blank">
+                <i data-lucide="smartphone" width="14" height="14"></i>
+                App Store
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__links">
+        <a href="https://github.com/" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:email@example.com" class="footer__link">Email</a>
+      </div>
+      <p class="footer__copy">&copy; 2026 Zaid Bin Khalid. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile Navigation Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+
+    navToggle.addEventListener('click', () => {
+      navMobile.classList.toggle('active');
+      
+      // Update icon
+      const icon = navToggle.querySelector('i');
+      if (navMobile.classList.contains('active')) {
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav__mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMobile.classList.remove('active');
+        const icon = navToggle.querySelector('i');
+        icon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+      });
+    });
+
+    // Navbar background on scroll
+    const nav = document.querySelector('.nav');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.boxShadow = 'var(--shadow-sm)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+
+    // Smooth reveal animation on scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply animation to cards
+    document.querySelectorAll('.work-card, .project-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
