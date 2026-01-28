@@ -214,8 +214,16 @@
       height: 160px;
       border-radius: 50%;
       object-fit: cover;
+      object-position: top;
       border: 4px solid var(--color-bg-alt);
       box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .hero__image:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-lg), 0 0 0 4px var(--color-accent-light);
     }
 
     .hero__content {
@@ -240,20 +248,43 @@
       font-weight: 700;
       line-height: 1.2;
       color: var(--color-text);
-      margin-bottom: var(--space-md);
-      letter-spacing: -0.02em;
-    }
-
-    .hero__subtitle {
-      font-size: 1.125rem;
-      color: var(--color-text-muted);
       margin-bottom: var(--space-xl);
+      letter-spacing: -0.02em;
     }
 
     .hero__links {
       display: flex;
       justify-content: center;
       gap: var(--space-md);
+    }
+
+    .hero__resume {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: var(--space-lg);
+    }
+
+    .hero__resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      color: var(--color-accent);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all var(--transition);
+    }
+
+    .hero__resume-btn:hover {
+      color: var(--color-accent-hover);
+      text-decoration: underline;
+    }
+
+    .hero__resume-date {
+      font-size: 0.75rem;
+      color: var(--color-text-light);
+      margin-top: 4px;
     }
 
     .hero__social {
@@ -288,27 +319,18 @@
 
     .section__header {
       text-align: center;
-      margin-bottom: var(--space-3xl);
+      margin-bottom: var(--space-2xl);
     }
 
     .section__label {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-xs);
-      font-size: 0.8125rem;
+      gap: var(--space-sm);
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
       font-weight: 600;
       color: var(--color-accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-sm);
-    }
-
-    .section__title {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--color-text);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
 
     /* ===== About Section ===== */
@@ -323,13 +345,87 @@
       margin-bottom: var(--space-lg);
     }
 
-    .about__text:last-child {
-      margin-bottom: 0;
+    .about__text:last-of-type {
+      margin-bottom: var(--space-lg);
+    }
+
+    .about__note {
+      font-size: 0.875rem;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--color-text-light);
     }
 
     .about__highlight {
       color: var(--color-text);
       font-weight: 500;
+    }
+
+    /* ===== Education Section ===== */
+    .education__list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .education-card {
+      display: flex;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      background: var(--color-bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      transition: all var(--transition);
+    }
+
+    .education-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-border-light);
+    }
+
+    .education-card__icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: var(--color-accent-light);
+      border-radius: var(--radius-md);
+      color: var(--color-accent);
+    }
+
+    .education-card__content {
+      flex: 1;
+    }
+
+    .education-card__degree {
+      font-family: var(--font-serif);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 4px;
+    }
+
+    .education-card__school {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--color-accent);
+      margin-bottom: 2px;
+    }
+
+    .education-card__period {
+      font-size: 0.8125rem;
+      color: var(--color-text-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    .education-card__details {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
     /* ===== Work Experience Section ===== */
@@ -578,7 +674,7 @@
     }
 
     .project-card__actions {
-      display: flex;
+      display: none; /* Temporarily hidden */
       flex-wrap: wrap;
       gap: var(--space-sm);
     }
@@ -649,12 +745,16 @@
         justify-content: flex-start;
       }
 
+      .hero__resume {
+        align-items: flex-start;
+      }
+
       .hero__title {
         font-size: 3rem;
       }
 
-      .section__title {
-        font-size: 2.25rem;
+      .section__label {
+        font-size: 2rem;
       }
 
       .media-gallery {
@@ -694,6 +794,7 @@
       
       <ul class="nav__menu">
         <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#education" class="nav__link">Education</a></li>
         <li><a href="#work" class="nav__link">Work</a></li>
         <li><a href="#projects" class="nav__link">Projects</a></li>
       </ul>
@@ -705,6 +806,7 @@
       <div class="nav__mobile" id="navMobile">
         <ul class="nav__mobile-list">
           <li><a href="#about" class="nav__mobile-link">About</a></li>
+          <li><a href="#education" class="nav__mobile-link">Education</a></li>
           <li><a href="#work" class="nav__mobile-link">Work</a></li>
           <li><a href="#projects" class="nav__mobile-link">Projects</a></li>
         </ul>
@@ -716,7 +818,9 @@
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__image-wrapper">
-        <img src="images/profile.jpg" alt="Zaid Bin Khalid" class="hero__image" onerror="this.style.background='linear-gradient(135deg, #eff6ff 0%, #e2e8f0 100%)'; this.style.display='block';">
+        <a href="images/dp.jpeg" target="_blank" rel="noopener">
+          <img src="images/dp.jpeg" alt="Zaid Bin Khalid" class="hero__image" onerror="this.style.background='linear-gradient(135deg, #eff6ff 0%, #e2e8f0 100%)'; this.style.display='block';">
+        </a>
       </div>
       
       <div class="hero__content">
@@ -725,21 +829,25 @@
           Welcome
         </span>
         <h1 class="hero__title">Zaid Bin Khalid</h1>
-        <p class="hero__subtitle">A brief tagline describing your role, expertise, or passion. Keep it concise and impactful.</p>
         
         <div class="hero__links">
-          <a href="https://github.com/" class="hero__social" aria-label="GitHub" target="_blank" rel="noopener">
+          <a href="https://github.com/zaidbkhalid" class="hero__social" aria-label="GitHub" target="_blank" rel="noopener">
             <i data-lucide="github" width="20" height="20"></i>
           </a>
-          <a href="https://linkedin.com/" class="hero__social" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <a href="https://www.linkedin.com/in/zbk2001/" class="hero__social" aria-label="LinkedIn" target="_blank" rel="noopener">
             <i data-lucide="linkedin" width="20" height="20"></i>
           </a>
-          <a href="mailto:email@example.com" class="hero__social" aria-label="Email">
+          <a href="mailto:zk08128@st.habib.edu.pk" class="hero__social" aria-label="Email">
             <i data-lucide="mail" width="20" height="20"></i>
           </a>
-          <a href="https://twitter.com/" class="hero__social" aria-label="Twitter" target="_blank" rel="noopener">
-            <i data-lucide="twitter" width="20" height="20"></i>
+        </div>
+        
+        <div class="hero__resume">
+          <a href="https://drive.google.com/file/d/YOUR_RESUME_FILE_ID/view" class="hero__resume-btn" target="_blank" rel="noopener">
+            <i data-lucide="file-text" width="18" height="18"></i>
+            View my Resume
           </a>
+          <span class="hero__resume-date">(Last updated: 28th January)</span>
         </div>
       </div>
     </div>
@@ -750,35 +858,108 @@
     <div class="container">
       <header class="section__header">
         <span class="section__label">
-          <i data-lucide="user" width="14" height="14"></i>
+          <i data-lucide="user" width="18" height="18"></i>
           About Me
         </span>
-        <h2 class="section__title">A Little About Myself</h2>
       </header>
 
       <div class="about__content">
         <p class="about__text">
-          Hello! I'm <span class="about__highlight">Zaid Bin Khalid</span>, a passionate professional with expertise in your field of work. Write a brief introduction about yourself here—your background, what drives you, and what makes you unique.
+          I'm a <span class="about__highlight">final-year Electrical Engineering student</span> with a deep interest in <span class="about__highlight">AI, Robotics, and Product Management</span>. I love building things that actually solve real-world problems, and I enjoy thinking in systems and using design thinking to make sure what I build is not just technically cool, but also useful and usable.
         </p>
         <p class="about__text">
-          Share your journey, your skills, and what you're currently focused on. This section should give visitors a sense of who you are both professionally and personally. Keep it authentic and engaging.
+          My experience sits at the intersection of <span class="about__highlight">intelligent algorithms, physical systems, and user-centered product development</span> — bridging theory with practical, deployable solutions.
         </p>
         <p class="about__text">
-          When I'm not working, I enjoy hobbies or interests. Feel free to mention what you're learning, exploring, or any personal projects that excite you.
+          Beyond academics, I am an avid learner and explorer. I enjoy playing and following cricket, chess, and badminton, and I find balance in gardening. I'm always on the lookout for compelling TV shows, movies, and video games, and I love traveling to experience new cultures, ideas, and perspectives.
         </p>
+        <p class="about__note">Note: This website is under construction as I continue to update project reports, videos, media, and code.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section" id="education">
+    <div class="container">
+      <header class="section__header">
+        <span class="section__label">
+          <i data-lucide="graduation-cap" width="18" height="18"></i>
+          Education
+        </span>
+      </header>
+
+      <div class="education__list">
+        <article class="education-card">
+          <div class="education-card__icon">
+            <i data-lucide="graduation-cap" width="24" height="24"></i>
+          </div>
+          <div class="education-card__content">
+            <h3 class="education-card__degree">Bachelor of Science in Electrical Engineering</h3>
+            <p class="education-card__school">Habib University · Karachi, Pakistan</p>
+            <p class="education-card__period">August 2022 - June 2026 · CGPA: 3.21/4.00</p>
+            <p class="education-card__details"><strong>Relevant Coursework:</strong> Introduction to Robotics, Mobile Robotics, Engineering Design and Innovation, Digital Signal Processing, Statistical Inference, Supply Chain Management, Principles of Management, Control Systems, Linear Algebra, Discrete Mathematics, Probability and Statistics, Calculus, Computer Architecture, Microcontrollers and Interfacing, Programming Fundamentals, Data Structures and Algorithms, Object-Oriented Programming, Digital Logic and Design.</p>
+          </div>
+        </article>
+
+        <article class="education-card">
+          <div class="education-card__icon">
+            <i data-lucide="laptop" width="24" height="24"></i>
+          </div>
+          <div class="education-card__content">
+            <h3 class="education-card__degree">Data Science and AI Bootcamp</h3>
+            <p class="education-card__school">Atom Camp</p>
+            <p class="education-card__period">August 2025 - December 2025</p>
+            <p class="education-card__details">Intensive bootcamp covering machine learning, deep learning, and data science through hands-on projects. Built end-to-end pipelines in computer vision, data visualization, NLP, EDA, SQL queries, and AI agents—bridging theoretical foundations with practical, deployable solutions.</p>
+          </div>
+        </article>
+
+        <article class="education-card">
+          <div class="education-card__icon">
+            <i data-lucide="laptop" width="24" height="24"></i>
+          </div>
+          <div class="education-card__content">
+            <h3 class="education-card__degree">IBM Product Manager Professional Certificate</h3>
+            <p class="education-card__school">Coursera (IBM) · Remote</p>
+            <p class="education-card__period">December 2025 - Ongoing</p>
+            <p class="education-card__details">Comprehensive program covering product strategy, development lifecycle, stakeholder collaboration, and Agile methodologies. Building hands-on experience through real-world projects in market research, roadmap planning, and product launch—preparing for the AIPMM Certified Product Manager (CPM) certification.</p>
+          </div>
+        </article>
+
+        <article class="education-card">
+          <div class="education-card__icon">
+            <i data-lucide="school" width="24" height="24"></i>
+          </div>
+          <div class="education-card__content">
+            <h3 class="education-card__degree">CAIE -  A-levels</h3>
+            <p class="education-card__school">Foundation Public School (As) and Highbrow College (A2)</p>
+            <p class="education-card__period">2018 - 2020</p>
+            <p class="education-card__details">4 As, 1 E</p>
+          </div>
+        </article>
+
+        <article class="education-card">
+          <div class="education-card__icon">
+            <i data-lucide="school" width="24" height="24"></i>
+          </div>
+          <div class="education-card__content">
+            <h3 class="education-card__degree">CAIE -  O-levels</h3>
+            <p class="education-card__school">Sadequain Grammar School</p>
+            <p class="education-card__period">2016 - 2018</p>
+            <p class="education-card__details">2 A*s, 5 As, 4 Bs</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- Work Experience Section -->
-  <section class="section" id="work">
+  <section class="section section--alt" id="work">
     <div class="container">
       <header class="section__header">
         <span class="section__label">
-          <i data-lucide="briefcase" width="14" height="14"></i>
+          <i data-lucide="briefcase" width="18" height="18"></i>
           Experience
         </span>
-        <h2 class="section__title">Work Experience</h2>
       </header>
 
       <div class="work__list">
@@ -787,71 +968,32 @@
           <header class="work-card__header">
             <span class="work-card__company">
               <i data-lucide="building-2" width="14" height="14"></i>
-              Company Name
+              Habib University · Karachi, Pakistan
             </span>
-            <h3 class="work-card__title">Senior Position Title</h3>
-            <p class="work-card__subtitle">Jan 2023 - Present · Full-time</p>
+            <h3 class="work-card__title">Undergraduate Researcher - Capstone Project</h3>
+            <p class="work-card__subtitle">October 2025 - Present · Supervised by Dr. Farhan Khan</p>
           </header>
           
           <p class="work-card__description">
-            Brief description of your role and key responsibilities. Highlight significant achievements, projects you led, or technologies you worked with. Keep it impactful and results-oriented.
+            Developing a unified AI-based framework that integrates crash detection with acoustic source localization to estimate crash coordinates in real time. The research involves designing and benchmarking classical machine learning models (SVM, Naive Bayes) against deep temporal architectures (LSTM) for sequence-aware event classification across background, skid, and crash states—achieving over 90% test accuracy under controlled conditions. Currently implementing MFCC-based feature extraction with RNN-LSTM networks to improve classification robustness in noisy urban environments. The project also includes extensive validation studies using data augmentation techniques such as time-stretching, pitch shifting, SNR variation, and noise injection to ensure model reliability across diverse real-world scenarios.
           </p>
 
           <!-- Media Gallery -->
           <div class="media-gallery">
             <div class="media-card">
               <div class="media-card__preview">
-                <img src="images/work-1-preview.jpg" alt="Project Preview" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'image\' class=\'media-card__preview-icon\' width=\'48\' height=\'48\'></i>'; lucide.createIcons();">
+                <i data-lucide="file-text" class="media-card__preview-icon" width="48" height="48"></i>
               </div>
               <div class="media-card__body">
-                <h4 class="media-card__title">Project Documentation</h4>
+                <h4 class="media-card__title">Project Proposal</h4>
                 <span class="media-card__type">
                   <i data-lucide="file-text" width="12" height="12"></i>
                   PDF Document
                 </span>
                 <div class="media-card__actions">
-                  <a href="https://drive.google.com/file/d/YOUR_FILE_ID/preview" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                  <a href="https://drive.google.com/file/d/1u2CFtduHHE2tYmtaMGU3G11Xsenjoejn/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
                     <i data-lucide="eye" width="14" height="14"></i>
                     View PDF
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="media-card">
-              <div class="media-card__preview">
-                <!-- Google Drive Video Embed Placeholder -->
-                <i data-lucide="play-circle" class="media-card__preview-icon" width="48" height="48"></i>
-              </div>
-              <div class="media-card__body">
-                <h4 class="media-card__title">Demo Video</h4>
-                <span class="media-card__type">
-                  <i data-lucide="video" width="12" height="12"></i>
-                  Video
-                </span>
-                <div class="media-card__actions">
-                  <a href="https://drive.google.com/file/d/YOUR_VIDEO_ID/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
-                    <i data-lucide="play" width="14" height="14"></i>
-                    Watch Video
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="media-card">
-              <div class="media-card__preview">
-                <img src="images/work-1-screenshot.jpg" alt="Screenshot" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'image\' class=\'media-card__preview-icon\' width=\'48\' height=\'48\'></i>'; lucide.createIcons();">
-              </div>
-              <div class="media-card__body">
-                <h4 class="media-card__title">Project Screenshot</h4>
-                <span class="media-card__type">
-                  <i data-lucide="image" width="12" height="12"></i>
-                  Image
-                </span>
-                <div class="media-card__actions">
-                  <a href="images/work-1-screenshot.jpg" class="btn btn--secondary btn--sm" target="_blank">
-                    <i data-lucide="maximize-2" width="14" height="14"></i>
-                    Full Size
                   </a>
                 </div>
               </div>
@@ -864,36 +1006,95 @@
           <header class="work-card__header">
             <span class="work-card__company">
               <i data-lucide="building-2" width="14" height="14"></i>
-              Previous Company
+              Habib University · Karachi, Pakistan
             </span>
-            <h3 class="work-card__title">Position Title</h3>
-            <p class="work-card__subtitle">Jun 2020 - Dec 2022 · Full-time</p>
+            <h3 class="work-card__title">Summer Tehqiq Researcher</h3>
+            <p class="work-card__subtitle">June 2024 - August 2024 · Advised by Dr. Shahid Sheikh and Dr. Hurr Rizvi</p>
           </header>
           
           <p class="work-card__description">
-            Description of your previous role. Focus on growth, learnings, and key contributions. Quantify achievements where possible (e.g., "Improved performance by 40%").
+            Conducted research on smart grid systems, focusing on simulating transmission line models and developing a novel algorithm for detecting anomalies. This work contributed to improving the reliability and efficiency of power grid monitoring systems.
           </p>
+        </article>
 
-          <div class="media-gallery">
-            <div class="media-card">
-              <div class="media-card__preview">
-                <i data-lucide="presentation" class="media-card__preview-icon" width="48" height="48"></i>
-              </div>
-              <div class="media-card__body">
-                <h4 class="media-card__title">Presentation Slides</h4>
-                <span class="media-card__type">
-                  <i data-lucide="file-text" width="12" height="12"></i>
-                  PDF Slides
-                </span>
-                <div class="media-card__actions">
-                  <a href="https://drive.google.com/file/d/YOUR_FILE_ID/preview" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
-                    <i data-lucide="eye" width="14" height="14"></i>
-                    View PDF
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- Work Item 3 -->
+        <article class="work-card">
+          <header class="work-card__header">
+            <span class="work-card__company">
+              <i data-lucide="building-2" width="14" height="14"></i>
+              The Citizens Foundation · Karachi, Pakistan
+            </span>
+            <h3 class="work-card__title">Mathematics Teacher</h3>
+            <p class="work-card__subtitle">June 2024</p>
+          </header>
+          
+          <p class="work-card__description">
+            Taught a class of 30 students, delivering multiple interactive sessions per day and facilitating team-building exercises to foster collaboration and engagement among students.
+          </p>
+        </article>
+
+        <!-- Work Item 4 -->
+        <article class="work-card">
+          <header class="work-card__header">
+            <span class="work-card__company">
+              <i data-lucide="building-2" width="14" height="14"></i>
+              Habib University · Karachi, Pakistan
+            </span>
+            <h3 class="work-card__title">Teaching Assistant / Peer Tutor for Calculus I and II</h3>
+            <p class="work-card__subtitle">August 2023 - December 2024</p>
+          </header>
+          
+          <p class="work-card__description">
+            Redesigned the course delivery with engaging, empathetic pedagogy tailored to diverse student needs, resulting in measurably improved learning outcomes. Facilitated both large-group sessions with over 150 students and individual tutoring, simplifying complex mathematical concepts through clear communication and practical analogies.
+          </p>
+        </article>
+
+        <!-- Work Item 5 -->
+        <article class="work-card">
+          <header class="work-card__header">
+            <span class="work-card__company">
+              <i data-lucide="building-2" width="14" height="14"></i>
+              Habib University · Karachi, Pakistan
+            </span>
+            <h3 class="work-card__title">Summer Tehqiq Researcher</h3>
+            <p class="work-card__subtitle">June 2023 - December 2023 · Supervised by Miss Aatyka Fatima</p>
+          </header>
+          
+          <p class="work-card__description">
+            Collaborated with faculty to redesign the learning experience for Calculus I, leveraging student feedback collected through focus groups to optimize teaching methods. Conducted qualitative surveys and analysis to identify student struggles, applying design thinking principles to develop a comprehensive support program that addressed key learning gaps.
+          </p>
+        </article>
+
+        <!-- Work Item 6 -->
+        <article class="work-card">
+          <header class="work-card__header">
+            <span class="work-card__company">
+              <i data-lucide="building-2" width="14" height="14"></i>
+              Habib University · Karachi, Pakistan
+            </span>
+            <h3 class="work-card__title">HU IEEE Chapter Event Lead</h3>
+            <p class="work-card__subtitle">August 2025 - Present</p>
+          </header>
+          
+          <p class="work-card__description">
+            Responsible for organizing IEEE tech talks and managing planning for the HU Robotics Competition, coordinating with speakers, participants, and university stakeholders to deliver impactful technical events.
+          </p>
+        </article>
+
+        <!-- Work Item 7 -->
+        <article class="work-card">
+          <header class="work-card__header">
+            <span class="work-card__company">
+              <i data-lucide="building-2" width="14" height="14"></i>
+              Habib University · Karachi, Pakistan
+            </span>
+            <h3 class="work-card__title">Math Club Treasurer</h3>
+            <p class="work-card__subtitle">February 2023 - February 2024</p>
+          </header>
+          
+          <p class="work-card__description">
+            Spearheaded the organization of "Mathema 23", managing logistics and registrations for over 300 students while serving as the primary liaison between participants, sponsors, and faculty.
+          </p>
         </article>
       </div>
     </div>
@@ -904,33 +1105,33 @@
     <div class="container">
       <header class="section__header">
         <span class="section__label">
-          <i data-lucide="layers" width="14" height="14"></i>
-          Portfolio
+          <i data-lucide="layers" width="18" height="18"></i>
+          Projects
         </span>
-        <h2 class="section__title">Featured Projects</h2>
       </header>
 
       <div class="projects__grid">
         <!-- Project 1 -->
         <article class="project-card">
           <div class="project-card__image">
-            <img src="images/project-1.jpg" alt="Project One" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+            <img src="images/Real-Time%20Object%20Detection%20Pipeline_img.jpeg" alt="Real-Time Object Detection Pipeline" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
           </div>
           <div class="project-card__body">
             <div class="project-card__tags">
-              <span class="project-card__tag">React</span>
-              <span class="project-card__tag">TypeScript</span>
+              <span class="project-card__tag">Computer Vision</span>
+              <span class="project-card__tag">YOLOv8</span>
+              <span class="project-card__tag">PyTorch</span>
             </div>
-            <h3 class="project-card__title">Project One</h3>
-            <p class="project-card__description">A brief description of this project. What problem does it solve? What technologies did you use?</p>
+            <h3 class="project-card__title">Real-Time Object Detection Pipeline</h3>
+            <p class="project-card__description">Engineered an end-to-end real-time object detection pipeline using YOLOv8 and PyTorch, implementing automated data annotation and transfer learning to fine-tune on custom datasets for high-performance safety-monitoring applications.</p>
             <div class="project-card__actions">
               <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
                 <i data-lucide="github" width="14" height="14"></i>
                 View Code
               </a>
-              <a href="#" class="btn btn--secondary btn--sm" target="_blank">
-                <i data-lucide="external-link" width="14" height="14"></i>
-                Live Demo
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="file-text" width="14" height="14"></i>
+                View PDF
               </a>
             </div>
           </div>
@@ -939,23 +1140,24 @@
         <!-- Project 2 -->
         <article class="project-card">
           <div class="project-card__image">
-            <img src="images/project-2.jpg" alt="Project Two" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+            <img src="images/EDA.png" alt="Real Estate Market Analysis" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
           </div>
           <div class="project-card__body">
             <div class="project-card__tags">
-              <span class="project-card__tag">Python</span>
-              <span class="project-card__tag">Machine Learning</span>
+              <span class="project-card__tag">Data Visualization</span>
+              <span class="project-card__tag">Pandas</span>
+              <span class="project-card__tag">Seaborn</span>
             </div>
-            <h3 class="project-card__title">Project Two</h3>
-            <p class="project-card__description">Another project description. Highlight unique aspects, challenges overcome, or impressive results.</p>
+            <h3 class="project-card__title">Real Estate Market Analysis (EDA)</h3>
+            <p class="project-card__description">Performed comprehensive exploratory data analysis on Zameen.com listings, identifying key pricing drivers, regional market trends, and visualizing feature-valuation correlations to extract actionable investment insights.</p>
             <div class="project-card__actions">
-              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+              <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+                View Code
+              </a>
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
                 <i data-lucide="file-text" width="14" height="14"></i>
                 View PDF
-              </a>
-              <a href="https://drive.google.com/file/d/YOUR_VIDEO_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
-                <i data-lucide="play" width="14" height="14"></i>
-                Watch Video
               </a>
             </div>
           </div>
@@ -964,19 +1166,24 @@
         <!-- Project 3 -->
         <article class="project-card">
           <div class="project-card__image">
-            <img src="images/project-3.jpg" alt="Project Three" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+            <img src="images/Robotic%20Arm.png" alt="4-DOF Robotic Arm for Pick & Place" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
           </div>
           <div class="project-card__body">
             <div class="project-card__tags">
-              <span class="project-card__tag">Node.js</span>
-              <span class="project-card__tag">MongoDB</span>
+              <span class="project-card__tag">Kinematics</span>
+              <span class="project-card__tag">Inverse Kinematics</span>
+              <span class="project-card__tag">Robotics</span>
             </div>
-            <h3 class="project-card__title">Project Three</h3>
-            <p class="project-card__description">Describe this project's purpose, your role, and the impact it had. Be specific and quantify if possible.</p>
+            <h3 class="project-card__title">4-DOF Robotic Arm for Pick & Place</h3>
+            <p class="project-card__description">Programmed a 4-DOF arm for autonomous pick-and-place operation, achieving over 80% accuracy by segmenting and detecting color cubes from camera feed and optimizing inverse kinematics for precise positioning and movement.</p>
             <div class="project-card__actions">
               <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
                 <i data-lucide="github" width="14" height="14"></i>
                 View Code
+              </a>
+              <a href="https://drive.google.com/file/d/YOUR_VIDEO_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="play" width="14" height="14"></i>
+                Watch Demo
               </a>
             </div>
           </div>
@@ -985,17 +1192,22 @@
         <!-- Project 4 -->
         <article class="project-card">
           <div class="project-card__image">
-            <img src="images/project-4.jpg" alt="Project Four" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+            <img src="images/Dual%20Copter.png" alt="Dual-Copter Control System" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
           </div>
           <div class="project-card__body">
             <div class="project-card__tags">
-              <span class="project-card__tag">UI/UX</span>
-              <span class="project-card__tag">Figma</span>
+              <span class="project-card__tag">Control Systems</span>
+              <span class="project-card__tag">Simulation</span>
+              <span class="project-card__tag">Stability Analysis</span>
             </div>
-            <h3 class="project-card__title">Project Four</h3>
-            <p class="project-card__description">A design or research project. Explain your process, key insights, and the final outcome.</p>
+            <h3 class="project-card__title">Dual-Copter Control System</h3>
+            <p class="project-card__description">Developed a full mathematical model and PID control loop for a fixed-axis dual-copter system, validating feedback-control principles through simulation and achieving transient stability with minimal oscillation.</p>
             <div class="project-card__actions">
-              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+              <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+                View Code
+              </a>
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
                 <i data-lucide="file-text" width="14" height="14"></i>
                 View PDF
               </a>
@@ -1006,15 +1218,16 @@
         <!-- Project 5 -->
         <article class="project-card">
           <div class="project-card__image">
-            <img src="images/project-5.jpg" alt="Project Five" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+            <img src="images/Maze%20Solving.png" alt="Maze Solving Mobile Robot" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
           </div>
           <div class="project-card__body">
             <div class="project-card__tags">
-              <span class="project-card__tag">AWS</span>
-              <span class="project-card__tag">Docker</span>
+              <span class="project-card__tag">Embedded C</span>
+              <span class="project-card__tag">PID Control</span>
+              <span class="project-card__tag">Sensor Integration</span>
             </div>
-            <h3 class="project-card__title">Project Five</h3>
-            <p class="project-card__description">Infrastructure or DevOps project. Explain the architecture, challenges, and solutions implemented.</p>
+            <h3 class="project-card__title">Maze Solving Mobile Robot</h3>
+            <p class="project-card__description">Programmed a Tiva C microcontroller to process infrared and ultrasonic sensor data for real-time navigation decisions, utilizing PID control for a differential drive robot to navigate a maze with obstacle avoidance and precise turning movements.</p>
             <div class="project-card__actions">
               <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
                 <i data-lucide="github" width="14" height="14"></i>
@@ -1031,23 +1244,76 @@
         <!-- Project 6 -->
         <article class="project-card">
           <div class="project-card__image">
-            <img src="images/project-6.jpg" alt="Project Six" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+            <img src="images/project-4.jpg" alt="Hospital Management Database System" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
           </div>
           <div class="project-card__body">
             <div class="project-card__tags">
-              <span class="project-card__tag">Mobile</span>
-              <span class="project-card__tag">Flutter</span>
+              <span class="project-card__tag">SQL</span>
+              <span class="project-card__tag">Query Optimization</span>
+              <span class="project-card__tag">ERD Modeling</span>
             </div>
-            <h3 class="project-card__title">Project Six</h3>
-            <p class="project-card__description">Mobile application project. Describe the app's purpose, features, and your development approach.</p>
+            <h3 class="project-card__title">Hospital Management Database System</h3>
+            <p class="project-card__description">Designed and normalized a hospital-operations relational database modeling patients, doctors, and appointments, while optimizing complex SQL workloads through CTEs and Window Functions to improve patient-tracking and resource-allocation analysis.</p>
             <div class="project-card__actions">
               <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
                 <i data-lucide="github" width="14" height="14"></i>
                 View Code
               </a>
-              <a href="#" class="btn btn--secondary btn--sm" target="_blank">
-                <i data-lucide="smartphone" width="14" height="14"></i>
-                App Store
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="file-text" width="14" height="14"></i>
+                View PDF
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 7 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-7.jpg" alt="Engineering Design & Innovation" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">Systems Engineering</span>
+              <span class="project-card__tag">Robotics</span>
+              <span class="project-card__tag">Dawlance</span>
+            </div>
+            <h3 class="project-card__title">Engineering Design & Innovation</h3>
+            <p class="project-card__description">Applied systems engineering principles to study Dawlance's microwave assembly bottleneck and designed a complete autonomous robotic solution concept to streamline production and improve efficiency.</p>
+            <div class="project-card__actions">
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="file-text" width="14" height="14"></i>
+                View PDF
+              </a>
+              <a href="https://drive.google.com/file/d/YOUR_VIDEO_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="play" width="14" height="14"></i>
+                Watch Video
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 8 -->
+        <article class="project-card">
+          <div class="project-card__image">
+            <img src="images/project-3.jpg" alt="IMDB Sentiment Analysis Engine" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">NLP</span>
+              <span class="project-card__tag">Tokenization</span>
+              <span class="project-card__tag">Feature Engineering</span>
+            </div>
+            <h3 class="project-card__title">IMDB Sentiment Analysis Engine</h3>
+            <p class="project-card__description">Developed a sentiment classification engine for 50k+ movie reviews using N-gram vectorization and Naive Bayes to automate text analysis. Optimized the preprocessing pipeline with lemmatization and stop-word removal to enhance accuracy and reduce data sparsity.</p>
+            <div class="project-card__actions">
+              <a href="https://github.com/" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="github" width="14" height="14"></i>
+                View Code
+              </a>
+              <a href="https://drive.google.com/file/d/YOUR_FILE_ID/view" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="file-text" width="14" height="14"></i>
+                View PDF
               </a>
             </div>
           </div>
@@ -1060,9 +1326,9 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__links">
-        <a href="https://github.com/" class="footer__link" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:email@example.com" class="footer__link">Email</a>
+        <a href="https://github.com/zaidbkhalid" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/zbk2001/" class="footer__link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:zk08128@st.habib.edu.pk" class="footer__link">Email</a>
       </div>
       <p class="footer__copy">&copy; 2026 Zaid Bin Khalid. All rights reserved.</p>
     </div>
