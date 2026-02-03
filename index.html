@@ -679,6 +679,10 @@
       gap: var(--space-sm);
     }
 
+    .project-card__actions--visible {
+      display: flex;
+    }
+
     /* ===== Footer ===== */
     .footer {
       padding: var(--space-3xl) 0;
@@ -842,13 +846,13 @@
           </a>
         </div>
         
-        <div class="hero__resume">
+        <!-- <div class="hero__resume">
           <a href="https://drive.google.com/file/d/YOUR_RESUME_FILE_ID/view" class="hero__resume-btn" target="_blank" rel="noopener">
             <i data-lucide="file-text" width="18" height="18"></i>
             View my Resume
           </a>
           <span class="hero__resume-date">(Last updated: 28th January)</span>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -996,6 +1000,22 @@
                     View PDF
                   </a>
                 </div>
+              </div>
+            </div>
+
+            <div class="media-card">
+              <div class="media-card__preview">
+                <a href="images/undergrad%20research%201.jpeg" target="_blank" rel="noopener">
+                  <img src="images/undergrad%20research%201.jpeg" alt="Research Image" style="width: 100%; height: 100%; object-fit: cover;">
+                </a>
+              </div>
+              <div class="media-card__body">
+                <h4 class="media-card__title">Research Visualization</h4>
+                <span class="media-card__type">
+                  <i data-lucide="image" width="12" height="12"></i>
+                  Image
+                </span>
+                <p style="font-size: 0.8125rem; color: var(--color-text-muted); margin-top: var(--space-xs);">Mel spectogram of an audio signal</p>
               </div>
             </div>
           </div>
@@ -1244,6 +1264,28 @@
         <!-- Project 6 -->
         <article class="project-card">
           <div class="project-card__image">
+            <img src="images/MR.png" alt="MR" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
+          </div>
+          <div class="project-card__body">
+            <div class="project-card__tags">
+              <span class="project-card__tag">Path Planning</span>
+              <span class="project-card__tag">SLAM</span>
+              <span class="project-card__tag">Mobile Robotics</span>
+            </div>
+            <h3 class="project-card__title">Autonomous Navigation for rescue missions</h3>
+            <p class="project-card__description">Autonomous differential-drive rescue robot that uses LiDAR and dual sound sensors (triangulation) to locate survivors, with graph-based SLAM and NAV2 for navigation in unknown disaster environments.</p>
+            <div class="project-card__actions project-card__actions--visible">
+              <!-- <a href="https://drive.google.com/file/d/1lYBZH8avI_EgZfeSnB5wPKaPaoLtahsy/view" class="btn btn--primary btn--sm" target="_blank" rel="noopener">
+                <i data-lucide="play" width="14" height="14"></i>
+                View Video
+              </a> -->
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 7 -->
+        <article class="project-card">
+          <div class="project-card__image">
             <img src="images/project-4.jpg" alt="Hospital Management Database System" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
           </div>
           <div class="project-card__body">
@@ -1267,7 +1309,7 @@
           </div>
         </article>
 
-        <!-- Project 7 -->
+        <!-- Project 8 -->
         <article class="project-card">
           <div class="project-card__image">
             <img src="images/project-7.jpg" alt="Engineering Design & Innovation" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
@@ -1293,7 +1335,7 @@
           </div>
         </article>
 
-        <!-- Project 8 -->
+        <!-- Project 9 -->
         <article class="project-card">
           <div class="project-card__image">
             <img src="images/project-3.jpg" alt="IMDB Sentiment Analysis Engine" onerror="this.style.display='none'; this.parentElement.innerHTML='<i data-lucide=\'folder-open\' class=\'project-card__image-icon\' width=\'64\' height=\'64\'></i>'; lucide.createIcons();">
